@@ -48,10 +48,10 @@ trait Optional[A] {
   def orElse(o: => Optional[A]): Optional[A] = if (!isEmpty) this else o
 
   // Exercise 11
-  def toLeft[X](right: => X): Either[A, X] = ???
+  def toLeft[X](right: => X): Either[A, X] = if (isEmpty) Right(right) else Left(this.get)
 
   // Exercise 12
-  def toRight[X](left: => X): Either[X, A] = ???
+  def toRight[X](left: => X): Either[X, A] = if (isEmpty) Left(left) else Right(this.get)
 
   // Exercise 13
   def toList: List[A] = ???
