@@ -45,7 +45,7 @@ trait Optional[A] {
   def isEmpty: Boolean = !isDefined
 
   // Exercise 10
-  def orElse(o: => Optional[A]): Optional[A] = ???
+  def orElse(o: => Optional[A]): Optional[A] = if (!isEmpty) this else o
 
   // Exercise 11
   def toLeft[X](right: => X): Either[A, X] = ???
